@@ -1,20 +1,28 @@
 name: shelf_web_socket
-version: 3.0.1-wip
+version: 3.0.1
 description: A shelf handler that wires up a listener for every connection.
 repository: https://github.com/dart-lang/shelf/tree/master/pkgs/shelf_web_socket
 issue_tracker: https://github.com/dart-lang/shelf/issues?q=is%3Aissue+is%3Aopen+label%3Apackage%3Ashelf_web_socket
+
+# publishable packages can't have git dependencies
+publish_to: none
 
 topics:
   - server
   - shelf
 
 environment:
-  sdk: ^3.5.0
+  sdk: ">=3.9.0 <4.0.0"
 
 dependencies:
   shelf: ^1.1.0
   stream_channel: ^2.1.0
-  web_socket_channel: '>=2.0.0 <4.0.0'
+  web_socket_channel:
+    git:
+      url: git@github.com:pieces-app/http.git
+      path: pkgs/web_socket_channel
+      tag_pattern: 'web_socket_channel-v{{version}}'
+    version: ^3.0.4
 
 dev_dependencies:
   dart_flutter_team_lints: ^3.0.0
